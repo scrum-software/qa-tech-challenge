@@ -1,36 +1,10 @@
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
-from config import BASE_URL
+
+from modules.base import InitialPage
 
 
-class Page(object):
-    """Model of generic page"""
-
-    # overridden when set in subclass
-    BASE_PATH = None
-
-    def __init__(self, driver, force_load=False, **url_args):
-        self.driver = driver
-
-        if force_load:
-            self.url = '{}/{}'.format(
-                BASE_URL,
-                self.BASE_PATH.format(**url_args)
-            )
-            self.driver.get(self.url)
-
-        self.wait_until_page_is_loaded()
-
-    def wait_until(self, rule):
-        WebDriverWait(self.driver, 5).until(
-            lambda _: rule
-        )
-
-    def wait_until_page_is_loaded(self):
-        raise NotImplementedError()
-
-
-class InitialPage(Page):
+class ChallengeOneTable(InitialPage):
     def wait_until_page_is_loaded(self):
         self.wait_until(self.render_challenge_button.is_displayed())
 
