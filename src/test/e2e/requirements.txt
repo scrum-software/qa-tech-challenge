@@ -7,5 +7,3 @@ requests==2.14.2
 idna==2.5
 lovely-pytest-docker==0.0.5
 docker-compose==1.24.0
-flask
-redis
