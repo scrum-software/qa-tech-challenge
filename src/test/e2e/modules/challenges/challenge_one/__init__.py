@@ -13,16 +13,28 @@ class ChallengeOne(Page):
         )
 
     @property
-    def challenge_table(self):
-        return self.driver.find_element_by_css_selector('tbody')
-
-    @property
     def table(self):
         table = self.driver.find_element_by_css_selector('tbody')
         return Table(self.driver, table)
 
+    @property
+    def submit_one_button(self):
+        return self.driver.find_element_by_css_selector('#submit-1')
+
+    def populate_answers(self):
+        answers = [4, 3, 5]
+        self.submit_one_button.send_keys('test')
+
+    @property
+    def submission_fields(self):
+        submission_fields = self.driver.find_elements_by_css_selector('[data-test-id^="submit"]')
+        return [SubmissionField(self.driver, submission_field) for submission_field in submission_fields]
+
 
 class Table(Page):
+    def wait_until_page_is_loaded(self):
+        pass
+
     def __init__(self, driver, table):
         self.driver = driver
         self.table = table
@@ -51,4 +63,11 @@ class RowCell(TableRow):
 
     @property
     def cell_value(self):
-        return self.row_cell.text
+        return int(self.row_cell.text)
+
+
+class SubmissionField(ChallengeOne):
+    def __init__(self, driver, submission_field):
+        self.driver = driver
+        self.submission_field = submission_field
+
