@@ -3,3 +3,9 @@ pytest==3.5.0
 pytest-selenium==1.12.0
 pytest-xdist==1.22.2
 selenium==3.12.0
+requests==2.14.2
+idna==2.5
+lovely-pytest-docker==0.0.5
+docker-compose==1.24.0
+flask
+redis

@@ -3,7 +3,7 @@ from modules.base import InitialPage
 from modules.test_helpers import ListParser, TableToDictionary
 
 
-def test_arrays_challenge(browser):
+def test_arrays_challenge(browser, docker_app):
     initial_page = InitialPage(browser)
     assert initial_page.render_challenge_button.text == 'RENDER THE CHALLENGE'
 
@@ -16,4 +16,5 @@ def test_arrays_challenge(browser):
     # Temporarily disabled the below to ensure the slack isn't spammed
     # challenge_one.populate_answers_and_submit(completed_answers)
 
+    
     pass
