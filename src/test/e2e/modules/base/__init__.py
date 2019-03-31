@@ -38,9 +38,6 @@ class InitialPage(Page):
     def render_challenge_button(self):
         return self.driver.find_element_by_css_selector('[data-test-id=render-challenge]')
 
-    @property
-    def submit_button(self):
-        return self.driver.find_element_by_xpath('//*[contains(text(), "Submit Answers")]')
 
     @property
     def page_height(self):

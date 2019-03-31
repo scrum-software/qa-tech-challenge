@@ -18,6 +18,10 @@ class ChallengeOne(Page):
         table = self.driver.find_element_by_css_selector('tbody')
         return Table(self.driver, table)
 
+    @property
+    def submit_button(self):
+        return self.driver.find_element_by_xpath('//*[contains(text(), "Submit Answers")]')
+
     @staticmethod
     def populate_name(submission_field):
         submission_field.send_keys(NAME)
@@ -29,6 +33,8 @@ class ChallengeOne(Page):
             submission_field.send_keys(answers_array[idx]) if idx < len(answers_array) \
                 else self.populate_name(submission_field)
         pass
+
+        self.submit_button.click()
 
     @property
     def submission_fields(self):
