@@ -10,7 +10,7 @@ class ChallengeOne(Page):
 
     def wait_until_page_is_loaded(self):
         WebDriverWait(self.driver, 5).until(
-            lambda _: self.challenge_table
+            lambda _: self.table
         )
 
     @property
