@@ -26,7 +26,7 @@ class ChallengeOne(Page):
     def populate_name(submission_field):
         submission_field.send_keys(NAME)
 
-    def populate_answers(self, answers_array):
+    def populate_answers_and_submit(self, answers_array):
         submission_fields = self.submission_fields
         assert len(submission_fields) == len(answers_array) + 1, 'Check that table size corresponds to submissions size'
         for idx, submission_field in enumerate(submission_fields):

@@ -14,5 +14,4 @@ def test_arrays_challenge(browser):
     cell_values_object = TableToDictionary().convert_table_to_dict(challenge_one.table.table_rows)
 
     completed_answers = ListParser().derive_answers(cell_values_object)
-    challenge_one.populate_answers(completed_answers)
-    pass
+    challenge_one.populate_answers_and_submit(completed_answers)
