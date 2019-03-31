@@ -1,6 +1,7 @@
 from selenium.webdriver.support.wait import WebDriverWait
 
 from modules.base import Page
+from config import NAME
 
 
 class ChallengeOne(Page):
@@ -17,13 +18,17 @@ class ChallengeOne(Page):
         table = self.driver.find_element_by_css_selector('tbody')
         return Table(self.driver, table)
 
-    @property
-    def submit_one_button(self):
-        return self.driver.find_element_by_css_selector('#submit-1')
+    @staticmethod
+    def populate_name(submission_field):
+        submission_field.send_keys(NAME)
 
-    def populate_answers(self):
-        answers = [4, 3, 5]
-        self.submit_one_button.send_keys('test')
+    def populate_answers(self, answers_array):
+        submission_fields = self.submission_fields
+        assert len(submission_fields) == len(answers_array) + 1, 'Check that table size corresponds to submissions size'
+        for idx, submission_field in enumerate(submission_fields):
+            submission_field.send_keys(answers_array[idx]) if idx < len(answers_array) \
+                else self.populate_name(submission_field)
+        pass
 
     @property
     def submission_fields(self):
@@ -71,3 +76,5 @@ class SubmissionField(ChallengeOne):
         self.driver = driver
         self.submission_field = submission_field
 
+    def send_keys(self, value_to_enter):
+        self.submission_field.send_keys(value_to_enter)

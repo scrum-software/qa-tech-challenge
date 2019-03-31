@@ -3,7 +3,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from config import BASE_URL
 
-
 class Page(object):
     """Model of generic page"""
 
