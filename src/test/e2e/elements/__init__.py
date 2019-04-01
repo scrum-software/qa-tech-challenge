@@ -34,7 +34,4 @@ class ChallengeOneTable(InitialPage):
         except TimeoutException:
             raise Exception("Bottom of the page could not be scrolled to")
 
-        pass
-
-
 

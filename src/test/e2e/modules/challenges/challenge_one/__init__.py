@@ -31,8 +31,7 @@ class ChallengeOne(Page):
         assert len(submission_fields) == len(answers_array) + 1, 'Check that table size corresponds to submissions size'
         for idx, submission_field in enumerate(submission_fields):
             submission_field.send_keys(answers_array[idx]) if idx < len(answers_array) \
-                else self.populate_name(submission_field)
-        pass
+                else self.populate_name(submission_field)        
 
         self.submit_button.click()
 
