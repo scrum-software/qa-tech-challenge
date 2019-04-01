@@ -2,6 +2,8 @@ import os
 import pytest
 from selenium import webdriver
 
+from config import BASE_URL
+
 
 @pytest.fixture(scope='session')
 def docker_app(docker_services):
@@ -10,7 +12,8 @@ def docker_app(docker_services):
         public_port = docker_services.wait_for_service("app", 3000)
         url = "http://{docker_services.docker_ip}:{public_port}".format(**locals())
     else:
-        url = "http://localhost:3000"
+        # This is currently hardcoded. Given time and necessity, we can make this parameter dynamic, i.e. by using command line arguments.
+        url = BASE_URL
     
     return url
 

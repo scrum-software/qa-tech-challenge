@@ -1,4 +1,3 @@
-
 class TableToDictionary:
     def __init__(self):
         self.cell_values_object = {}
