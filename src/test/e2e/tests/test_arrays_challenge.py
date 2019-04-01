@@ -15,6 +15,3 @@ def test_arrays_challenge(browser, docker_app):
     completed_answers = ListParser().derive_answers(cell_values_object)
     # Temporarily disabled the below to ensure the slack isn't spammed
     # challenge_one.populate_answers_and_submit(completed_answers)
-
-    
-    pass
